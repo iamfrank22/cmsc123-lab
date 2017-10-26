@@ -73,7 +73,7 @@ public class LinkedList<E> implements Collection<E> {
   }
   
   // -> Iterator<E>
-  // returns an instance of the LinkedListIterator
+  // returns an instance of the LinkedListIterator.
   public Iterator<E> iterator() {
     return new LinkedListIterator();
   }
