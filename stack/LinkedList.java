@@ -47,12 +47,20 @@ public class LinkedList<E> implements Collection<E> {
   // int -> boolean
   // accepts an index of type int 
   // and it should remove the item at the given index.
-  public boolean remove(int index) {
-    if(this.size == 0)
-      return false;
+  public E remove(int index) {
+    if(this.size == 0) {
+      throw new NoSuchElementException("Stack underload!");
+    }
     
     Node current = this.head;
     Node previous = null;
+    
+    if(index == 0){
+      previous = current;
+      current = current.next;
+      previous.next = null;
+      }
+    
     for(int i = 0; i < index; i++) {
       previous = current;
       current = current.next;
@@ -60,10 +68,12 @@ public class LinkedList<E> implements Collection<E> {
         break;
       } 
     }
-     previous.next = current.next;
-     current.next = null;
-     this.size--;
-     return true;
+    E item = current.data;
+    previous.next = current.next;
+    current.next = null;
+    this.size--;
+     
+     return item;
   }
   
   // -> int
@@ -72,8 +82,20 @@ public class LinkedList<E> implements Collection<E> {
     return this.size;
   }
   
+  public E getData(int index) {
+    Node current = this.head;
+    for(int i = 0; i < index; i++) {
+      current = current.next;
+      if(current == null) {
+        break;
+      } 
+    }
+    E item = current.data;
+    return item;
+  }
+  
   // -> Iterator<E>
-  // returns an instance of the LinkedListIterator.
+  // returns an instance of the LinkedListIterator
   public Iterator<E> iterator() {
     return new LinkedListIterator();
   }
@@ -92,6 +114,16 @@ public class LinkedList<E> implements Collection<E> {
       E item = current.data;
       current = current.next;
       return item;
+    }
+  }
+  
+  public void display() {
+    Node current = this.head;
+    int ctr = 0;
+    while(current != null){
+      System.out.println("stack" + ctr + ": " + current.data);
+      current = current.next;
+      ctr++;
     }
   }
 }
