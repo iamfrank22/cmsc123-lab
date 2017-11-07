@@ -73,7 +73,7 @@ public class LinkedList<E> implements Collection<E> {
     current.next = null;
     this.size--;
      
-     return item;
+    return item;
   }
   
   // -> int
