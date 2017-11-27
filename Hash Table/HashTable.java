@@ -112,26 +112,30 @@ class HashTable {
     return true;
   }
   
-  // function which prints all the values in the hash table
-  public void values() {
+  // function which prints a list of values in the hash table
+  public List values() {
+    List valueList = new ArrayList();
     for (int i = 0; i < MAX_SIZE; i++) {
       HashNode newNode = hashTable[i];
       while (newNode != null) {
-        System.out.print(newNode.value + " \n");
+        valueList.add(newNode.value);
         newNode = newNode.next;
       } 
     }
+    return valueList;
   }
   
-  // function which prints all the keys in the hash table
-  public void keys() {
+  // function which prints a list of keys in the hash table
+  public List keys() {
+    List keyList = new ArrayList();
     for (int i = 0; i < MAX_SIZE; i++) {
       HashNode newNode = hashTable[i];
       while (newNode != null) {
-        System.out.print(newNode.key + " \n");
+        keyList.add(newNode.key);
         newNode = newNode.next;
       } 
     }
+    return keyList;
   }
   
   // function which gives the hash value of the String
@@ -151,10 +155,5 @@ class HashTable {
         newNode = newNode.next;
       } 
     }
-  }
-  
-  // function which returns the number of elements in the hash table
-  public int getSize() {
-    return size;
   }
 }
