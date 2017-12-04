@@ -133,7 +133,7 @@ class MinHeap {
     System.out.print(heap[index] + " ");
   }
   
-  // function which returns true if a index is a leaf.
+  // function which returns true if an index is a leaf.
   // false, otherwise.
   protected boolean isLeaf(int i) {
     return ((i >= (size / 2)) && (i <= size));
